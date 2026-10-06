@@ -21,7 +21,7 @@ Install instructions and examples are in each port's repo.
 | `spec/SPEC.md` | Behavior spec |
 | `spec/capability.yaml` | Machine-readable contract: types, operations, errors, limits |
 | `conformance/` | Test cases every port must pass; regenerate with `uv run conformance/generate/generate.py` |
-| `bench/` | Shared benchmark input and the Rust reference (coming before the first port's M3) |
+| `bench/` | Shared benchmark input, method and the Rust reference |
 | `.kit/` | Shared conventions, schemas and validator (vendored) |
 | `CONTRIBUTING.md` | How changes to the spec are made |
 | `DECISIONS.md` | Why the spec is the way it is |
