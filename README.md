@@ -8,9 +8,9 @@ The spec and conformance cases for PMTiles. Each language port lives in its own 
 
 | Language | Repo | Package | Spec pinned | Conformance | Status |
 |---|---|---|---|---|---|
-| Nim | [`Xenoglyphiq/pmtiles-nim`](https://github.com/Xenoglyphiq/pmtiles-nim) | `pmtiles` | 0.1.1 | core ✓ io ✓ full ✓ (68/68) | **released v0.1.0**: git tag; Nimble directory listing in review (nim-lang/packages#3562) |
-| Swift | [`Xenoglyphiq/pmtiles-swift`](https://github.com/Xenoglyphiq/pmtiles-swift) | `PMTiles` | 0.1.1 | core ✓ io ✓ full ✓ (68/68) | **released 0.1.0**: git tag; Swift Package Index submission pending |
-| Zig | [`Xenoglyphiq/pmtiles-zig`](https://github.com/Xenoglyphiq/pmtiles-zig) | `pmtiles` | 0.1.1 | core ✓ io ✓ full ✓ (68/68) | **released v0.1.0**: git tag; tagged `zig-package` for zigistry to index |
+| Nim | [`Xenoglyphiq/pmtiles-nim`](https://github.com/Xenoglyphiq/pmtiles-nim) | `pmtiles` | 0.2.0 | core ✓ io ✓ full ✓ (81/81) | **released v0.2.0**: git tag; Nimble directory listing in review (nim-lang/packages#3562) |
+| Swift | [`Xenoglyphiq/pmtiles-swift`](https://github.com/Xenoglyphiq/pmtiles-swift) | `PMTiles` | 0.2.0 | core ✓ io ✓ full ✓ (81/81) | **released 0.2.0**: git tag; Swift Package Index submission in review (SwiftPackageIndex/PackageList#15565) |
+| Zig | [`Xenoglyphiq/pmtiles-zig`](https://github.com/Xenoglyphiq/pmtiles-zig) | `pmtiles` | 0.2.0 | core ✓ io ✓ full ✓ (81/81) | **released v0.2.0**: git tag; tagged `zig-package` for zigistry to index |
 
 Install instructions and examples are in each port's repo.
 
