@@ -31,6 +31,7 @@ Spec-level decisions. Newest at the bottom. Status is **Accepted** unless noted.
 
 The generator cross-checks every oracle result against a transcription of spec §3.
 **Why:** The oracle's writer always gzips internal data, and its reader has no error codes or limits.
+**Reproducibility:** the generator routes the oracle's `gzip.compress` through a gzip writer that uses deflate *stored* blocks. zlib and zlib-ng, which Python builds on different platforms use, compress identical input to different bytes, so archives generated on macOS and on the Linux CI runner differed. Stored blocks are byte-identical everywhere and are valid gzip for every decoder, so ports are still tested on real gzip parsing.
 **Affects:** `conformance/`, spec §6.
 
 ### D-005 — Too-deep leaf nesting is an error

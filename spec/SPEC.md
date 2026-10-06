@@ -156,7 +156,7 @@ Binary search the entries, which are sorted by `tile_id`. Then:
   - a small archive (z0–z3, with a run of identical tiles and one missing tile);
   - an archive large and irregular enough to use **leaf directories** (z0–z7).
 
-  Errors, the decisions where we differ from the oracle, and archives the writer can't produce (uncompressed, unknown compression) are written from the spec (D-004). Every oracle result is cross-checked against a transcription of this section.
+  Errors, the decisions where we differ from the oracle, and archives the writer can't produce (uncompressed, unknown compression) are written from the spec (D-004). Every oracle result is cross-checked against a transcription of this section. Internal gzip in the archives uses deflate *stored* blocks, so regeneration is byte-identical on every platform (D-004).
 
 ## 7. The three canonical examples
 

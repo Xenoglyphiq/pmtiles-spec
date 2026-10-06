@@ -22,12 +22,12 @@
         "value": {
           "spec_version": 3,
           "root_directory_offset": 127,
-          "root_directory_length": 56,
-          "metadata_offset": 183,
-          "metadata_length": 72,
-          "leaf_directories_offset": 255,
+          "root_directory_length": 332,
+          "metadata_offset": 459,
+          "metadata_length": 77,
+          "leaf_directories_offset": 536,
           "leaf_directories_length": 0,
-          "tile_data_offset": 255,
+          "tile_data_offset": 536,
           "tile_data_length": 433,
           "addressed_tiles_count": 84,
           "tile_entries_count": 77,
@@ -68,12 +68,12 @@
         "value": {
           "spec_version": 3,
           "root_directory_offset": 127,
-          "root_directory_length": 48,
-          "metadata_offset": 175,
-          "metadata_length": 58,
-          "leaf_directories_offset": 233,
-          "leaf_directories_length": 63916,
-          "tile_data_offset": 64149,
+          "root_directory_length": 64,
+          "metadata_offset": 191,
+          "metadata_length": 62,
+          "leaf_directories_offset": 253,
+          "leaf_directories_length": 114867,
+          "tile_data_offset": 115120,
           "tile_data_length": 23479,
           "addressed_tiles_count": 21845,
           "tile_entries_count": 21823,
@@ -108,18 +108,18 @@
       "group": "header",
       "description": "Bytes after 127 are ignored",
       "input": {
-        "base64": "UE1UaWxlcwN/AAAAAAAAADgAAAAAAAAAtwAAAAAAAABIAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD/AAAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGB+LCAAAAAAAAv/zZWDEBjgYCQEmRmIBByN5gImFDQWxcTKzcbKCCPwIqzAjAxUBAPxzEOs1AQAAH4sIAAAAAAAC/6tWykvMTVU="
+        "base64": "UE1UaWxlcwN/AAAAAAAAAEwBAAAAAAAAywEAAAAAAABNAAAAAAAAABgCAAAAAAAAAAAAAAAAAAAYAgAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGB+LCAAAAAAAAP8BNQHK/k0AAQEBAQEBAQEBAQEBAQEBAQEBAQEBCAEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQI="
       },
       "expect": {
         "value": {
           "spec_version": 3,
           "root_directory_offset": 127,
-          "root_directory_length": 56,
-          "metadata_offset": 183,
-          "metadata_length": 72,
-          "leaf_directories_offset": 255,
+          "root_directory_length": 332,
+          "metadata_offset": 459,
+          "metadata_length": 77,
+          "leaf_directories_offset": 536,
           "leaf_directories_length": 0,
-          "tile_data_offset": 255,
+          "tile_data_offset": 536,
           "tile_data_length": 433,
           "addressed_tiles_count": 84,
           "tile_entries_count": 77,
@@ -154,18 +154,18 @@
       "group": "header",
       "description": "Unknown enum raw values are kept; zero counts decode as absent (A1)",
       "input": {
-        "base64": "UE1UaWxlcwN/AAAAAAAAADgAAAAAAAAAtwAAAAAAAABIAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD/AAAAAAAAALEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIJKgAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGA=="
+        "base64": "UE1UaWxlcwN/AAAAAAAAAEwBAAAAAAAAywEAAAAAAABNAAAAAAAAABgCAAAAAAAAAAAAAAAAAAAYAgAAAAAAALEBAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQIJKgAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGA=="
       },
       "expect": {
         "value": {
           "spec_version": 3,
           "root_directory_offset": 127,
-          "root_directory_length": 56,
-          "metadata_offset": 183,
-          "metadata_length": 72,
-          "leaf_directories_offset": 255,
+          "root_directory_length": 332,
+          "metadata_offset": 459,
+          "metadata_length": 77,
+          "leaf_directories_offset": 536,
           "leaf_directories_length": 0,
-          "tile_data_offset": 255,
+          "tile_data_offset": 536,
           "tile_data_length": 433,
           "addressed_tiles_count": null,
           "tile_entries_count": null,
@@ -204,7 +204,7 @@
       "group": "header.error",
       "description": "126 bytes: truncation is checked before magic",
       "input": {
-        "base64": "UE1UaWxlcwN/AAAAAAAAADgAAAAAAAAAtwAAAAAAAABIAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD/AAAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJ"
+        "base64": "UE1UaWxlcwN/AAAAAAAAAEwBAAAAAAAAywEAAAAAAABNAAAAAAAAABgCAAAAAAAAAAAAAAAAAAAYAgAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJ"
       },
       "expect": {
         "error": {
@@ -240,7 +240,7 @@
       "group": "header.error",
       "description": "Magic is not 'PMTiles'",
       "input": {
-        "base64": "UE1UaWxlegN/AAAAAAAAADgAAAAAAAAAtwAAAAAAAABIAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD/AAAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGA=="
+        "base64": "UE1UaWxlegN/AAAAAAAAAEwBAAAAAAAAywEAAAAAAABNAAAAAAAAABgCAAAAAAAAAAAAAAAAAAAYAgAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGA=="
       },
       "expect": {
         "error": {
@@ -258,7 +258,7 @@
       "group": "header.error",
       "description": "Spec version byte 2",
       "input": {
-        "base64": "UE1UaWxlcwJ/AAAAAAAAADgAAAAAAAAAtwAAAAAAAABIAAAAAAAAAP8AAAAAAAAAAAAAAAAAAAD/AAAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGA=="
+        "base64": "UE1UaWxlcwJ/AAAAAAAAAEwBAAAAAAAAywEAAAAAAABNAAAAAAAAABgCAAAAAAAAAAAAAAAAAAAYAgAAAAAAALEBAAAAAAAAVAAAAAAAAABNAAAAAAAAAE0AAAAAAAAAAQIBAAAD0Pm809BMIBjARRLUUHBjGANAjOfT4PRJGA=="
       },
       "expect": {
         "error": {
@@ -754,44 +754,44 @@
       "group": "directory",
       "description": "Root of leaf pointers (run_length 0)",
       "input": {
-        "base64": "BgCGIIQggSCHIIQgAAAAAAAAqVjcXthe6l7KXpsgAQAAAAAA"
+        "base64": "BgCGIIQggSCHIIQgAAAAAAAAuaIBzqkB76kB76kBxqkBiDgBAAAAAAA="
       },
       "expect": {
         "value": [
           {
             "tile_id": 0,
             "offset": 0,
-            "length": 11305,
+            "length": 20793,
             "run_length": 0
           },
           {
             "tile_id": 4102,
-            "offset": 11305,
-            "length": 12124,
+            "offset": 20793,
+            "length": 21710,
             "run_length": 0
           },
           {
             "tile_id": 8202,
-            "offset": 23429,
-            "length": 12120,
+            "offset": 42503,
+            "length": 21743,
             "run_length": 0
           },
           {
             "tile_id": 12299,
-            "offset": 35549,
-            "length": 12138,
+            "offset": 64246,
+            "length": 21743,
             "run_length": 0
           },
           {
             "tile_id": 16402,
-            "offset": 47687,
-            "length": 12106,
+            "offset": 85989,
+            "length": 21702,
             "run_length": 0
           },
           {
             "tile_id": 20502,
-            "offset": 59793,
-            "length": 4123,
+            "offset": 107691,
+            "length": 7176,
             "run_length": 0
           }
         ]
@@ -28962,37 +28962,37 @@
             {
               "tile_id": 0,
               "offset": 0,
-              "length": 11305,
+              "length": 20793,
               "run_length": 0
             },
             {
               "tile_id": 4102,
-              "offset": 11305,
-              "length": 12124,
+              "offset": 20793,
+              "length": 21710,
               "run_length": 0
             },
             {
               "tile_id": 8202,
-              "offset": 23429,
-              "length": 12120,
+              "offset": 42503,
+              "length": 21743,
               "run_length": 0
             },
             {
               "tile_id": 12299,
-              "offset": 35549,
-              "length": 12138,
+              "offset": 64246,
+              "length": 21743,
               "run_length": 0
             },
             {
               "tile_id": 16402,
-              "offset": 47687,
-              "length": 12106,
+              "offset": 85989,
+              "length": 21702,
               "run_length": 0
             },
             {
               "tile_id": 20502,
-              "offset": 59793,
-              "length": 4123,
+              "offset": 107691,
+              "length": 7176,
               "run_length": 0
             }
           ],
@@ -29002,8 +29002,8 @@
       "expect": {
         "value": {
           "tile_id": 4102,
-          "offset": 11305,
-          "length": 12124,
+          "offset": 20793,
+          "length": 21710,
           "run_length": 0
         }
       },

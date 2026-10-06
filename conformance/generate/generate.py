@@ -23,8 +23,28 @@ import hashlib
 import io
 import json
 import struct
+import zlib
 from dataclasses import dataclass
 from pathlib import Path
+
+
+def gzip_stored(data: bytes, compresslevel: int = 9, *, mtime: float | None = 0) -> bytes:
+    """gzip with deflate *stored* blocks: valid gzip that every decoder reads, and
+    byte-identical on every platform. zlib and zlib-ng (which Python builds use on
+    different platforms) compress the same input to different bytes, which made the
+    fixtures irreproducible across machines (DECISIONS.md D-004)."""
+    out = bytearray(b"\x1f\x8b\x08\x00\x00\x00\x00\x00\x00\xff")  # no flags, mtime 0, OS unknown
+    chunks = [data[i:i + 65535] for i in range(0, len(data), 65535)] or [b""]
+    for n, chunk in enumerate(chunks):
+        out += bytes([1 if n == len(chunks) - 1 else 0])  # BFINAL, BTYPE=00 (stored)
+        out += struct.pack("<HH", len(chunk), len(chunk) ^ 0xFFFF) + chunk
+    out += struct.pack("<II", zlib.crc32(data), len(data) & 0xFFFFFFFF)
+    return bytes(out)
+
+
+# The oracle's writer calls gzip.compress for every directory and the metadata. Route it
+# through the platform-independent version before the oracle is imported or used.
+gzip.compress = gzip_stored
 
 import pmtiles.tile as ot
 from pmtiles.reader import MemorySource, Reader
