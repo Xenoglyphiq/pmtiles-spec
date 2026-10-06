@@ -8,9 +8,9 @@ The spec and conformance cases for PMTiles. Each language port lives in its own 
 
 | Language | Repo | Package | Spec pinned | Conformance | Status |
 |---|---|---|---|---|---|
-| Nim | `Xenoglyphiq/pmtiles-nim` | `pmtiles` | – | – | planned |
-| Swift | `Xenoglyphiq/pmtiles-swift` | `PMTiles` | – | – | planned |
-| Zig | `Xenoglyphiq/pmtiles-zig` | `pmtiles` | – | – | planned |
+| Nim | [`Xenoglyphiq/pmtiles-nim`](https://github.com/Xenoglyphiq/pmtiles-nim) | `pmtiles` | 0.1.1 | core ✓ io ✓ full ✓ (68/68) | feature-complete; first release pending |
+| Swift | [`Xenoglyphiq/pmtiles-swift`](https://github.com/Xenoglyphiq/pmtiles-swift) | `PMTiles` | 0.1.1 | core ✓ io ✓ full ✓ (68/68) | feature-complete; first release pending |
+| Zig | [`Xenoglyphiq/pmtiles-zig`](https://github.com/Xenoglyphiq/pmtiles-zig) | `pmtiles` | 0.1.1 | core ✓ io ✓ full ✓ (68/68) | feature-complete; first release pending |
 
 Install instructions and examples are in each port's repo.
 

@@ -28,8 +28,15 @@ The ratio is **port median ÷ reference median, measured in the same session** (
 cargo run --release --manifest-path bench/rust/Cargo.toml
 ```
 
-| Date | Machine | get_tile pass median |
-|---|---|---|
-| — | — | — |
+Recorded 2026-10-06 on an Apple M5 Pro (24 GB, macOS 26.6.2), three interleaved rounds of all four harnesses in one session. Each figure is the median of the three rounds' medians; the ratio is against the reference from the same session.
 
-To be recorded in the same session as the first port's numbers.
+| Harness | Toolchain | get_tile pass median | Ratio |
+|---|---|---|---|
+| Rust `pmtiles` 0.24.1 (reference) | rustc 1.99.0 | 165.1 ms | 1.00 |
+| Nim `pmtiles`, stateless `getTile` | Nim 2.2.12, `-d:release` | 222.8 ms | 1.35× |
+| Zig `pmtiles`, `Reader` | Zig 0.17.0, ReleaseFast | 272.7 ms | 1.65× |
+| Zig `pmtiles`, stateless `getTile` | Zig 0.17.0, ReleaseFast | 280.4 ms | 1.70× |
+| Swift `PMTiles`, `PMTilesReader` | Swift 6.4, `-c release` | 344.9 ms | 2.09× (misses 2×) |
+| Swift `PMTiles`, stateless `getTile` | Swift 6.4, `-c release` | 359.6 ms | 2.18× (misses 2×) |
+
+All six reproduce checksum 998434. Each port's README carries its own row.
