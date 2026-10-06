@@ -38,6 +38,18 @@ The generator cross-checks every oracle result against a transcription of spec �
 **Status:** Proposed
 **Decision:** Following more than `max_leaf_depth` leaf pointers (default 4) is `pmtiles.leaf_depth_exceeded`. The root is depth 0.
 **Why:** A cycle or a hostile chain should fail loudly. The oracle stops after 4 directory reads and returns "no tile", which hides the problem.
-**Affects:** spec §3 `get_tile`, A6; all ports. No fixture yet, because writers only ever nest one level. A hand-built nested archive is a candidate for 0.1.x.
+**Affects:** spec §3 `get_tile`, A6; all ports. Fixtures since 0.2.0: hand-built chains of 4 leaf pointers (allowed) and 5 (`leaf_depth_exceeded`).
 **Revisit if:** the PMTiles spec defines a maximum depth.
 
+### D-006 — Decompression failures get their own code, and limits bound decompressed size
+**Status:** Accepted (2026-10-06, owner)
+**Decision:** Internal data in a supported compression that doesn't decode (corrupt, cut short, or a gzip CRC-32 or length mismatch) is `pmtiles.decompression_failed`, for directories and metadata alike. `max_directory_bytes` and `max_metadata_bytes` bound the bytes both as stored and as decompressed, for leaf directories as well as the root. Related rules made explicit at the same time: a short read is `pmtiles.truncated`, and an overflowing offset sum is `pmtiles.invalid_directory`.
+**Why:** 0.1.x had no code for a bad stream, so the three ports agreed on interim codes (`invalid_directory` for a directory, `truncated` for metadata). Both were misleading, and neither was in a fixture. Neither reference implementation helps: Python raises its gzip exceptions with no code, and `go-pmtiles` reports bad metadata as "unknown compression" and discards gzip errors in directories entirely. Without a decompressed-size bound, a few hundred bytes of gzip can expand to gigabytes.
+**Affects:** spec §3 `get_tile` and `read_metadata`, §5, A8; all ports (they already enforced the limits after decompression; they change codes). Found by the Swift, Nim and Zig ports (Xenoglyphiq/pmtiles-spec#3).
+
+### D-007 — Metadata must be well-formed UTF-8
+**Status:** Accepted (2026-10-06, owner)
+**Decision:** `read_metadata` rejects metadata that isn't well-formed UTF-8 (RFC 3629) with `pmtiles.invalid_metadata`. It checks nothing else: the JSON stays unparsed.
+**Why:** The PMTiles spec says the metadata is JSON, and JSON is UTF-8. The ports disagreed (Swift replaced bad bytes with U+FFFD, Nim and Zig returned them as is), and so do the references: the oracle rejects it as a side effect of parsing the JSON, while `go-pmtiles` passes the bytes through, and where it does parse them, replaces bad ones silently. Rejecting means a string is always a faithful copy of the stored bytes and no port has to choose a repair.
+**Affects:** spec §3 `read_metadata`, A9; all ports.
+**Revisit if:** real archives turn up with non-UTF-8 metadata that readers are expected to accept.

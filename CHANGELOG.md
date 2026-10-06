@@ -2,6 +2,18 @@
 
 Spec releases. Ports vendor a tagged release into `.spec/`; the version here is `spec_version` in `spec/capability.yaml`.
 
+## 0.2.0 — 2026-10-06
+
+Behavior changes in the io layer. Ports must re-sync and change two interim codes.
+
+- **New error codes:**
+  - `pmtiles.decompression_failed`: corrupt, cut-short or CRC-mismatched internal data. Ports previously reported `invalid_directory` for a directory and `truncated` for metadata (D-006).
+  - `pmtiles.invalid_metadata`: metadata that isn't well-formed UTF-8 (D-007).
+- **Limits:** `max_directory_bytes` and `max_metadata_bytes` now bound decompressed size too, and `max_directory_bytes` covers leaf directories (D-006).
+- **Stated explicitly:** a short read is `pmtiles.truncated`; an overflowing offset sum is `pmtiles.invalid_directory`.
+- **13 new io cases (81 total: 55 core, 26 io),** all on hand-built archives. They cover the codes and limits above, the leaf-depth limit (D-005; it had no fixture before), valid multi-byte UTF-8, and a tile past the end of the archive. Inflating archives use a hand-written fixed-Huffman gzip block, so regeneration stays byte-identical everywhere.
+- `fetch_one_tile` example pinned to `small.pmtiles`, tile `2/1/3` (what every port already did).
+
 ## 0.1.1 — 2026-10-06
 
 No behavior change; conformance cases are identical (only their `spec_version` stamp changed).
