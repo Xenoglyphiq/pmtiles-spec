@@ -22,3 +22,11 @@ jobs:
         run: |
           uv run conformance/generate/generate.py
           git diff --exit-code conformance/
+
+      - name: Benchmark input is reproducible
+        run: |
+          uv run bench/generate.py
+          git diff --exit-code bench/
+
+      - name: Reference benchmark builds and matches the checksum
+        run: cargo run --release --manifest-path bench/rust/Cargo.toml
