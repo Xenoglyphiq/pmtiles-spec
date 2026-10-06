@@ -173,6 +173,6 @@ performance:
   target: within 2x of reference
 
 ports:
-  - { language: nim, status: released, package: pmtiles, claims: [core, io, full], implements_spec: "0.1.1", dependency_tier: T1 }
-  - { language: swift, status: released, package: PMTiles, claims: [core, io, full], implements_spec: "0.1.1", dependency_tier: T0, toolchain: "Swift tools 6.0" }
-  - { language: zig, status: released, package: pmtiles, claims: [core, io, full], implements_spec: "0.1.1", dependency_tier: T0 }
+  - { language: nim, status: released, package: pmtiles, claims: [core, io, full], implements_spec: "0.2.0", dependency_tier: T0 }
+  - { language: swift, status: released, package: PMTiles, claims: [core, io, full], implements_spec: "0.2.0", dependency_tier: T0, toolchain: "Swift tools 6.0" }
+  - { language: zig, status: released, package: pmtiles, claims: [core, io, full], implements_spec: "0.2.0", dependency_tier: T0 }
