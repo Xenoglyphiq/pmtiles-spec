@@ -1,0 +1,24 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.2.0
+
+      - name: Validate spec and fixtures
+        run: uv run .kit/validate.py .
+
+      - name: Fixtures are reproducible
+        run: |
+          uv run conformance/generate/generate.py
+          git diff --exit-code conformance/
